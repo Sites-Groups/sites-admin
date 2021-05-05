@@ -1,523 +1,206 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>用户管理 - 后台管理系统</title>
-<link rel="icon" href="favicon.ico" type="image/ico">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/materialdesignicons.min.css" rel="stylesheet">
-<link href="js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/style.min.css" rel="stylesheet">
-</head>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>用户管理 - 后台管理系统</title>
+		<link rel="icon" href="favicon.ico" type="image/ico">
+		<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+		<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+		<meta name="author" content="yinqi">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/materialdesignicons.min.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.min.css" rel="stylesheet">
+		<link href="js/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	</head>
 
-<body>
-<div class="container-fluid p-t-15">
-  
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-toolbar d-flex flex-column flex-md-row">
-          <div class="toolbar-btn-action">
-            <a class="btn btn-primary m-r-5" href="#!"><i class="mdi mdi-plus"></i> 新增</a>
-            <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
-          </div>
-          
-        </div>
-        <div class="card-body">
-          
-          <div class="table-responsive">
-          	<table class="table table-bordered">
-          		<thead>
-          			<tr>
-          				<th>
-          					<div class="custom-control custom-checkbox">
-          						<input type="checkbox" class="custom-control-input" id="check-all">
-          						<label class="custom-control-label" for="check-all"></label>
-          					</div>
-          				</th>
-          				<th>编号</th>
-          				<th>头像</th>
-          				<th>用户名</th>
-          				<th>个人简介</th>
-						<th>性别</th>
-						<th>邮箱</th>
-						<th>身份</th>
-          				<th>操作</th>
-          			</tr>
-          		</thead>
-          		<tbody>
-          			<tr>
-          				<td>
-          					<div class="custom-control custom-checkbox">
-          						<input type="checkbox" class="custom-control-input ids" name="ids[]"
-          							value="1" id="ids-1">
-          						<label class="custom-control-label" for="ids-1"></label>
-          					</div>
-          				</td>
-          				<td>1</td>
-						<th><img class="img-avatar img-avatar-36 m-r-10" src="images/users/avatar.jpg"></th>
-          				<td>用户1</td>
-          				<td>个人简介</td>
-						<td>男</td>
-						<td>666@666.com</td>
-						<td>管理员</td>
-          				<td>
-          					<div class="btn-group">
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="权限"><i
-										class="mdi mdi-file-account"></i></a>
-          						<a class="btn btn-xs btn-default" href="#!" title=""
-          							data-toggle="tooltip" data-original-title="编辑"><i
-          								class="mdi mdi-pencil"></i></a>
-          						<a class="btn btn-xs btn-default ajax-get confirm" href="" title=""
-          							data-toggle="tooltip" data-original-title="删除"><i
-          								class="mdi mdi-window-close"></i></a>
-          					</div>
-          				</td>
-          			</tr>
-					<tr>
-						<td>
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input ids" name="ids[]"
-									value="1" id="ids-1">
-								<label class="custom-control-label" for="ids-1"></label>
-							</div>
-						</td>
-						<td>1</td>
-						<th><img class="img-avatar img-avatar-36 m-r-10" src="images/users/avatar.jpg"></th>
-						<td>用户1</td>
-						<td>个人简介</td>
-						<td>男</td>
-						<td>666@666.com</td>
-						<td>普通用户</td>
-						<td>
-							<div class="btn-group">
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="权限"><i
-										class="mdi mdi-file-account"></i></a>
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="编辑"><i
-										class="mdi mdi-pencil"></i></a>
-								<a class="btn btn-xs btn-default ajax-get confirm" href="" title=""
-									data-toggle="tooltip" data-original-title="删除"><i
-										class="mdi mdi-window-close"></i></a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input ids" name="ids[]"
-									value="1" id="ids-1">
-								<label class="custom-control-label" for="ids-1"></label>
-							</div>
-						</td>
-						<td>1</td>
-						<th><img class="img-avatar img-avatar-36 m-r-10" src="images/users/avatar.jpg"></th>
-						<td>用户1</td>
-						<td>个人简介</td>
-						<td>男</td>
-						<td>666@666.com</td>
-						<td>普通用户</td>
-						<td>
-							<div class="btn-group">
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="权限"><i
-										class="mdi mdi-file-account"></i></a>
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="编辑"><i
-										class="mdi mdi-pencil"></i></a>
-								<a class="btn btn-xs btn-default ajax-get confirm" href="" title=""
-									data-toggle="tooltip" data-original-title="删除"><i
-										class="mdi mdi-window-close"></i></a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input ids" name="ids[]"
-									value="1" id="ids-1">
-								<label class="custom-control-label" for="ids-1"></label>
-							</div>
-						</td>
-						<td>1</td>
-						<th><img class="img-avatar img-avatar-36 m-r-10" src="images/users/avatar.jpg"></th>
-						<td>用户1</td>
-						<td>个人简介</td>
-						<td>男</td>
-						<td>666@666.com</td>
-						<td>普通用户</td>
-						<td>
-							<div class="btn-group">
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="权限"><i
-										class="mdi mdi-file-account"></i></a>
-								<a class="btn btn-xs btn-default" href="#!" title=""
-									data-toggle="tooltip" data-original-title="编辑"><i
-										class="mdi mdi-pencil"></i></a>
-								<a class="btn btn-xs btn-default ajax-get confirm" href="" title=""
-									data-toggle="tooltip" data-original-title="删除"><i
-										class="mdi mdi-window-close"></i></a>
-							</div>
-						</td>
-					</tr>
-          			<tr>
-          				<td>
-          					<div class="custom-control custom-checkbox">
-          						<input type="checkbox" class="custom-control-input ids" name="ids[]"
-          							value="1" id="ids-1">
-          						<label class="custom-control-label" for="ids-1"></label>
-          					</div>
-          				</td>
-          				<td>1</td>
-          				<th><img class="img-avatar img-avatar-36 m-r-10" src="images/users/avatar.jpg"></th>
-          				<td>用户1</td>
-          				<td>个人简介</td>
-          				<td>男</td>
-          				<td>666@666.com</td>
-          				<td>普通用户</td>
-          				<td>
-          					<div class="btn-group">
-          						<a class="btn btn-xs btn-default" href="#!" title=""
-          							data-toggle="tooltip" data-original-title="权限"><i
-          								class="mdi mdi-file-account"></i></a>
-          						<a class="btn btn-xs btn-default" href="#!" title=""
-          							data-toggle="tooltip" data-original-title="编辑"><i
-          								class="mdi mdi-pencil"></i></a>
-          						<a class="btn btn-xs btn-default ajax-get confirm" href="" title=""
-          							data-toggle="tooltip" data-original-title="删除"><i
-          								class="mdi mdi-window-close"></i></a>
-          					</div>
-          				</td>
-          			</tr>
+	<body>
+		<div class="container-fluid p-t-15">
 
-          
-          		</tbody>
-          	</table>
-          </div>
-          <ul class="pagination">
-            <li class="page-item disabled"><span class="page-link">上一页</span></li>
-            <li class="page-item active"><span class="page-link">1</span></li>
-            <li class="page-item"><a class="page-link" href="#1">2</a></li>
-            <li class="page-item"><a class="page-link" href="#1">3</a></li>
-            <li class="page-item"><a class="page-link" href="#!">下一页</a></li>
-          </ul>
- 
-        </div>
-      </div>
-    </div>
-    
-    
-    
-  </div>
-  
-</div>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/popper.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/lyear-loading.js"></script>
-<script type="text/javascript" src="js/bootstrap-notify.min.js"></script>
-<script type="text/javascript" src="js/jquery-confirm/jquery-confirm.min.js"></script>
-<script type="text/javascript" src="js/main.min.js"></script>
-<script type="text/javascript">
-$(function(){
-    $('.search-bar .dropdown-menu a').click(function() {
-        var field = $(this).data('field') || '';
-        $('#search-field').val(field);
-        $('#search-btn').html($(this).text());
-    });
-    
-    // 通用ajax post请求
-    jQuery(document).delegate('.ajax-post', 'click', function(){
-        var self        = jQuery(this), tips = self.data('tips'), ajax_url = self.attr("href") || self.data("url");
-        var target_form = self.attr('target-form');
-        var text        = self.data('tips');
-        var form        = jQuery('form[name="'+ target_form +'"]');
-        
-        if (form.length == 0) {
-            form = jQuery('.' + target_form);
-        }
-        
-        var form_data = form.serialize();
-        if ('submit' == self.attr('type') || ajax_url) {
-            if (void 0 == form.get(0)) return false;
-            
-            // 如果节点是FORM表单
-            if ('FORM' == form.get(0).nodeName) {
-                ajax_url = ajax_url || form.get(0).action;
-                
-                // 确认提交
-                if (self.hasClass('confirm')) {
-                    $.confirm({
-                        title: '',
-                        content: tips || '确认要执行该操作吗？',
-                        type: 'orange',
-                        typeAnimated: true,
-                        buttons: {
-                            confirm: {
-                                text: '确认',
-                                btnClass: 'btn-blue',
-                                action: function() {
-                                    var loader = $('body').lyearloading({
-                                        opacity: 0.2,
-                                        spinnerSize: 'lg'
-                                    });
-                                    self.attr('autocomplete', 'off').prop('disabled', true);
-                                    ajaxPostFun(self, ajax_url, form_data, loader);
-                                }
-                            },
-                            cancel: {
-                                text: '取消',
-                                action: function() {}
-                            }
-                        }
-                    });
-                    return false;
-                } else {
-                    self.attr("autocomplete", "off").prop("disabled", true);
-                }
-            } else if ('INPUT' == form.get(0).nodeName || 'SELECT' == form.get(0).nodeName || 'TEXTAREA' == form.get(0).nodeName) {
-                // 复选框判断是否有选择项
-                if (form.get(0).type == 'checkbox' && form_data == '') {
-                    showNotify('请选择您要操作的数据', 'danger');
-                    return false;
-                }
-                
-                if (self.hasClass('confirm')) {
-                    $.confirm({
-                        title: '',
-                        content: tips || '确认要执行该操作吗？',
-                        type: 'orange',
-                        typeAnimated: true,
-                        buttons: {
-                            confirm: {
-                                text: '确认',
-                                btnClass: 'btn-blue',
-                                action: function() {
-                                    var loader = $('body').lyearloading({
-                                        opacity: 0.2,
-                                        spinnerSize: 'lg'
-                                    });
-                                    self.attr('autocomplete', 'off').prop('disabled', true);
-                                    
-                                    ajaxPostFun(self, ajax_url, form_data, loader);
-                                }
-                            },
-                            cancel: {
-                                text: '取消',
-                                action: function() {}
-                            }
-                        }
-                    });
-                    return false;
-                } else {
-                    self.attr("autocomplete", "off").prop("disabled", true);
-                }
-            } else {
-                if (self.hasClass('confirm')) {
-                    $.confirm({
-                        title: '',
-                        content: tips || '确认要执行该操作吗？',
-                        type: 'orange',
-                        typeAnimated: true,
-                        buttons: {
-                            confirm: {
-                                text: '确认',
-                                btnClass: 'btn-blue',
-                                action: function() {
-                                    var loader = $('body').lyearloading({
-                                        opacity: 0.2,
-                                        spinnerSize: 'lg'
-                                    });
-                                    self.attr('autocomplete', 'off').prop('disabled', true);
-                                    
-                                    ajaxPostFun(self, ajax_url, form_data, loader);
-                                }
-                            },
-                            cancel: {
-                                text: '取消',
-                                action: function() {}
-                            }
-                        }
-                    });
-                    return false;
-                } else {
-                    form_data = form.find("input,select,textarea").serialize();
-                    self.attr("autocomplete", "off").prop("disabled", true);
-                }
-            }
-            
-            var loader = $('body').lyearloading({
-                opacity: 0.2,
-                spinnerSize: 'lg'
-            });
-            ajaxPostFun(self, ajax_url, form_data, loader);
-            
-            return false;
-        }
-    });
-    
-    // 通用ajax get请求
-    jQuery(document).delegate('.ajax-get', 'click', function(){
-        var self = $(this), tips = self.data('tips'), ajax_url = self.attr("href") || self.data("url");
-        
-        if (self.hasClass('confirm')) {
-            $.confirm({
-                title: '',
-                content: tips || '确认要执行该操作吗？',
-                type: 'orange',
-                typeAnimated: true,
-                buttons: {
-                    confirm: {
-                        text: '确认',
-                        btnClass: 'btn-blue',
-                        action: function() {
-                            var loader = $('body').lyearloading({
-                                opacity: 0.2,
-                                spinnerSize: 'lg'
-                            });
-                            self.attr('autocomplete', 'off').prop('disabled', true);
-                            
-                            ajaxGetFun(self, ajax_url, loader);
-                        }
-                    },
-                    cancel: {
-                        text: '取消',
-                        action: function() {}
-                    }
-                }
-            });
-            return false;
-        } else {
-            var loader = $('body').lyearloading({
-                opacity: 0.2,
-                spinnerSize: 'lg'
-            });
-            self.attr('autocomplete', 'off').prop('disabled', true);
-            
-            ajaxGetFun(self, ajax_url, loader);
-        }
-        return false;
-    });
-    
-    // POST提交处理
-    function ajaxPostFun(selfObj, ajax_url, form_data, loader) {
-        console.log('url==>'+ajax_url);
-        console.log('form_data==>'+form_data);
-        setTimeout(function() {
-            loader.destroy();
-            showNotify('修改成功，页面即将自动跳转~', 'success', 1000);
-            selfObj.attr("autocomplete", "on").prop("disabled", false);
-        }, 1e3);
-        // 这里屏蔽get提交，js模拟返回成功，正常使用时请删除上面的内容，打开下面的注释代码
-        /*
-        jQuery.post(ajax_url, form_data).done(function(res) {
-            loader.destroy();
-            var res = eval('(' + res + ')');
-            var msg = res.msg;
-            if (200 == res.code) {
-                if (res.url && !selfObj.hasClass('no-refresh')) {
-                    msg += '页面即将自动跳转';
-                }
-                showNotify(msg, 'info');
-                setTimeout(function () {
-					selfObj.attr("autocomplete", "on").prop("disabled", false);
-					return selfObj.hasClass("no-refresh") ? false : (res.url ? location.href = res.url : location.reload());
-				}, 1500);
-            } else {
-                showNotify(msg, 'danger');
-                selfObj.attr("autocomplete", "on").prop("disabled", false);
-            }
-        }).fail(function () {
-            loader.destroy();
-            showNotify('服务器发生错误，请稍后再试', 'danger');
-            selfObj.attr("autocomplete", "on").prop("disabled", false);
-        });
-        */
-    }
-    
-    // GET提交处理
-    function ajaxGetFun(selfObj, ajax_url, loader) {
-        console.log(ajax_url);
-        setTimeout(function() {
-            loader.destroy();
-            showNotify('修改成功，页面即将自动跳转~', 'success', 1000);
-            selfObj.attr("autocomplete", "on").prop("disabled", false);
-        }, 1e3);
-        // 这里屏蔽get提交，js模拟返回成功，正常使用时请删除上面的内容，打开下面的注释代码
-        /*
-        jQuery.get(ajax_url).done(function(res) {
-            loader.destroy();
-            var res = eval('(' + res + ')');
-            var msg = res.msg;
-            if (200 == res.code) {
-                if (res.url && !selfObj.hasClass('no-refresh')) {
-                    msg += '页面即将自动跳转';
-                }
-                showNotify(msg, 'info');
-                setTimeout(function () {
-					selfObj.attr("autocomplete", "on").prop("disabled", false);
-					return selfObj.hasClass("no-refresh") ? false : (res.url ? location.href = res.url : location.reload());
-				}, 1500);
-            } else {
-                showNotify(msg, 'danger');
-                selfObj.attr("autocomplete", "on").prop("disabled", false);
-            }
-        }).fail(function () {
-            loader.destroy();
-            showNotify('服务器发生错误，请稍后再试', 'danger');
-            selfObj.attr("autocomplete", "on").prop("disabled", false);
-        });
-        */
-    }
-  
-    /*
-     * 提取通用的通知消息方法
-     * 这里只采用简单的用法，如果想要使用回调或者更多的用法，请查看lyear_js_notify.html页面
-     * @param $msg 提示信息
-     * @param $type 提示类型:'info', 'success', 'warning', 'danger'
-     * @param $delay 毫秒数，例如：1000
-     * @param $icon 图标，例如：'fa fa-user' 或 'glyphicon glyphicon-warning-sign'
-     * @param $from 'top' 或 'bottom' 消息出现的位置
-     * @param $align 'left', 'right', 'center' 消息出现的位置
-     */
-    function showNotify($msg, $type, $delay, $icon, $from, $align) {
-        $type  = $type || 'info';
-        $delay = $delay || 1000;
-        $from  = $from || 'top';
-        $align = $align || 'right';
-        $enter = $type == 'danger' ? 'animated shake' : 'animated fadeInUp';
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>用户管理</h4>
+						</div>
+						<div class="card-body">
 
-        jQuery.notify({
-            icon: $icon,
-            message: $msg
-        },
-        {
-            element: 'body',
-            type: $type,
-            allow_dismiss: true,
-            newest_on_top: true,
-            showProgressbar: false,
-            placement: {
-                from: $from,
-                align: $align
-            },
-            offset: 20,
-            spacing: 10,
-            z_index: 10800,
-            delay: $delay,
-            animate: {
-                enter: $enter,
-                exit: 'animated fadeOutDown'
-            }
-        });
-    }
-});
-</script>
-</body>
+							<div id="toolbar" class="toolbar-btn-action">
+								<button id="btn_add" type="button" class="btn btn-primary m-r-5">
+									<span class="mdi mdi-plus" aria-hidden="true"></span>新增
+								</button>
+								<button id="btn_edit" type="button" class="btn btn-success m-r-5">
+									<span class="mdi mdi-check" aria-hidden="true"></span>启用
+								</button>
+								<button id="btn_edit" type="button" class="btn btn-warning m-r-5">
+									<span class="mdi mdi-block-helper" aria-hidden="true"></span>禁用
+								</button>
+								<button id="btn_delete" type="button" class="btn btn-danger">
+									<span class="mdi mdi-window-close" aria-hidden="true"></span>删除
+								</button>
+							</div>
+							<table id="tb_departments"></table>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-table/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+		<!--行内编辑插件-->
+		<link href="js/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.min.css" rel="stylesheet">
+		<script type="text/javascript" src="js/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js">
+		</script>
+		<script type="text/javascript" src="js/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js">
+		</script>
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="js/main.min.js"></script>
+		<script type="text/javascript">
+			$('#tb_departments').bootstrapTable({
+				classes: 'table table-bordered table-hover table-striped',
+				url: api.domain + "/queryUsers",
+				method: 'post',
+				dataType: 'json', // 因为本示例中是跨域的调用,所以涉及到ajax都采用jsonp,
+				uniqueId: 'id',
+				idField: '_id', // 每行的唯一标识字段
+				toolbar: '#toolbar', // 工具按钮容器
+				//clickToSelect: true,     // 是否启用点击选中行
+				showColumns: true, // 是否显示所有的列
+				showRefresh: true, // 是否显示刷新按钮
+
+				//showToggle: true,        // 是否显示详细视图和列表视图的切换按钮(clickToSelect同时设置为true时点击会报错)
+				pagination: true, // 是否显示分页
+				ajaxOptions: {
+					headers: {
+						"Content-Type": 'application/json;charset=utf8',
+						authorization: api.siteToken
+					},
+				},
+				//sortOrder: "asc", // 排序方式
+				queryParams: function(params) {
+					console.info(params);
+					var temp = {
+						page: (params.offset / params.limit) + 1
+					};
+					return temp;
+				},
+				//queryParams: function(params) {
+				//	var temp = {
+				//		limit: params.limit, // 每页数据量
+				//		offset: params.offset, // sql语句起始索引
+				//		page: (params.offset / params.limit) + 1,
+				//		sort: params.sort, // 排序的列名
+				//		sortOrder: params.order // 排序方式'asc' 'desc'
+				//	};
+				//	return temp;
+				//}, // 传递参数
+				sidePagination: "server", // 分页方式：client客户端分页，server服务端分页
+				pageNumber: 1, // 初始化加载第一页，默认第一页
+				pageSize: 10, // 每页的记录行数
+				pageList: [10, 25, 50, 100], // 可供选择的每页的行数
+				//search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
+
+				//showExport: true,        // 是否显示导出按钮, 导出功能需要导出插件支持(tableexport.min.js)
+				//exportDataType: "basic", // 导出数据类型, 'basic':当前页, 'all':所有数据, 'selected':选中的数据
+				responseHandler: function(res) {
+					console.info(res);
+					if (res.success) {
+						return {
+							"total": res.totalCount,
+							"rows": res.data
+						}
+					} else {
+						//res.errorMsg
+					}
+				},
+				columns: [{
+						checkbox: true // 是否显示复选框
+					},
+					{
+						field: '_id',
+						title: 'ID',
+						sortable: true // 是否排序
+					},
+					{
+						field: 'name',
+						title: '用户名'
+					}, {
+						field: 'email',
+						title: '邮箱',
+					}, {
+						field: 'lastLoginTime',
+						title: '上次登录'
+					}, {
+						field: 'admin',
+						title: '管理员',
+						formatter: function(value, row, index) {
+							let html = '';
+							if (row.admin) {
+								html =
+									'<button class="bg-success" >是</button>';
+							} else {
+								html =
+									'<button class="bg-danger" data-value="0">否</button>';
+							}
+							return html;
+						}
+					}
+				],
+				/*
+				onEditableSave: function (field, row, oldValue, $el) {
+				    $.ajax({
+				        type: "get",
+				        url: "http://www.bixiaguangnian.com/index/test/testEditTwo",
+				        data: row,
+				        dataType: 'jsonp',
+				        success: function (data, status) {
+				            if (data.code == '200') {
+				                // 这里的状态显示有自定义样式区分，做单行的更新
+				                $('.example-table').bootstrapTable('updateRow', {index: row.id, row: row});
+				            } else {
+				                alert(data.msg);
+				            }
+				        },
+				        error: function () {
+				            alert('修改失败，请稍后再试');
+				        }
+				    });
+				}
+				*/
+				onLoadSuccess: function(data) {
+					$("[data-toggle='tooltip']").tooltip();
+				}
+			});
+
+			// 操作按钮
+			function btnGroup() {
+				let html =
+					'<a href="#!" class="btn btn-xs btn-default m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
+					'<a href="#!" class="btn btn-xs btn-default m-r-5 show-btn" title="查看" data-toggle="tooltip"><i class="mdi mdi-eye"></i></a>' +
+					'<a href="#!" class="btn btn-xs btn-default del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>';
+				return html;
+			}
+
+			// 操作方法 - 编辑
+			function editUser() {
+				alert('编辑信息跳转');
+			}
+			// 操作方法 - 删除
+			function delUser() {
+				alert('信息删除成功');
+			}
+			// 操作方法 - 查看
+			function showUser() {
+				alert('查看详细');
+			}
+		</script>
+	</body>
 </html>
