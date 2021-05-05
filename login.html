@@ -70,19 +70,20 @@
 				</div>
 			</form>
 
-			<p class="text-center text-muted mb-0">Copyright © 2020 <a href="https://sites.link/">站点聚合平台</a>. All right
+			<p class="text-center text-muted mb-0">Copyright © 2021 <a href="https://sites.link/">站点聚合平台</a>. All right
 				reserved</p>
 		</div>
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/config.js"></script>
+		
 		<script type="text/javascript" src="js/md5.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
-		<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script type="text/javascript" src="js/base64.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.min.js"></script>
 		<!--消息提示-->
 		<script src="js/bootstrap-notify.min.js"></script>
 		<script type="text/javascript" src="js/lightyear.js"></script>
 		<script type="text/javascript" src="js/main.min.js"></script>
+		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript">
 			;
 			$(function() {
@@ -95,7 +96,6 @@
 						"password": password
 					}).then(res => {
 						var data = res.data;
-						debugger;
 						if (res.success) {
 							if (data.admin) {
 								location.href = 'index.html';
