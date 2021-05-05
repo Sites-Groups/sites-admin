@@ -5,6 +5,8 @@
  */
 
 const domain = "https://sites.link";
+//const domain = "http://localhost:5050/";
+
 const siteToken = localStorage.getItem("siteToken") || $.cookie('siteToken');
 let api = {
 	loginPost: loginPost,

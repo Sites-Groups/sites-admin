@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>站点审核 - 后台管理系统</title>
+		<link rel="icon" href="favicon.ico" type="image/ico">
+		<meta name="author" content="yanqs">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/materialdesignicons.min.css" rel="stylesheet">
+		<link href="../../css/animate.css" rel="stylesheet">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link href="../../js/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="container-fluid p-t-15">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>站点审核</h4>
+						</div>
+						<div class="card-body">
+							<table id="tb_departments"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<script type="text/javascript" src="../../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/popper.min.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../js/perfect-scrollbar.min.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap-table/bootstrap-table.min.js"></script>
+		<script type="text/javascript" src="../../js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+		<!--行内编辑插件-->
+		<link href="../../js/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.min.css" rel="stylesheet">
+		<script type="text/javascript" src="../../js/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js">
+		</script>
+		<script type="text/javascript"
+			src="../../js/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js">
+		</script>
+		<!--消息提示-->
+		<script src="../../js/bootstrap-notify.min.js"></script>
+		<script type="text/javascript" src="../../js/lightyear.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/main.min.js"></script>
+		<script type="text/javascript">
+			/**************************************时间格式化处理************************************/
+			function dateFtt(fmt, date) { //author: meizz   
+				var o = {
+					"M+": date.getMonth() + 1, //月份   
+					"d+": date.getDate(), //日   
+					"h+": date.getHours(), //小时   
+					"m+": date.getMinutes(), //分   
+					"s+": date.getSeconds(), //秒   
+					"q+": Math.floor((date.getMonth() + 3) / 3), //季度   
+					"S": date.getMilliseconds() //毫秒   
+				};
+				if (/(y+)/.test(fmt))
+					fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for (var k in o)
+					if (new RegExp("(" + k + ")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k])
+							.length)));
+				return fmt;
+			}
+
+			$('#tb_departments').bootstrapTable({
+				classes: 'table table-bordered table-hover table-striped',
+				url: api.domain + "/queryRejectedSites",
+				method: 'post',
+				dataType: 'json', // 因为本示例中是跨域的调用,所以涉及到ajax都采用jsonp,
+				//uniqueId: '_id',
+				idField: '_id', // 每行的唯一标识字段
+				//toolbar: '#toolbar', // 工具按钮容器
+				//clickToSelect: true,     // 是否启用点击选中行
+				showColumns: false, // 是否显示所有的列
+				striped: true,
+				showRefresh: false, // 是否显示刷新按钮
+
+				//showToggle: true,        // 是否显示详细视图和列表视图的切换按钮(clickToSelect同时设置为true时点击会报错)
+				pagination: true, // 是否显示分页
+				ajaxOptions: {
+					headers: {
+						"Content-Type": 'application/json;charset=utf8',
+						authorization: api.siteToken
+					},
+				},
+				//sortOrder: "asc", // 排序方式
+				queryParams: function(params) {
+					//console.info(params);
+					var temp = {
+						page: (params.offset / params.limit) + 1
+					};
+					return temp;
+				},
+				//queryParams: function(params) {
+				//	var temp = {
+				//		limit: params.limit, // 每页数据量
+				//		offset: params.offset, // sql语句起始索引
+				//		page: (params.offset / params.limit) + 1,
+				//		sort: params.sort, // 排序的列名
+				//		sortOrder: params.order // 排序方式'asc' 'desc'
+				//	};
+				//	return temp;
+				//}, // 传递参数
+				sidePagination: "server", // 分页方式：client客户端分页，server服务端分页
+				pageNumber: 1, // 初始化加载第一页，默认第一页
+				pageSize: 10, // 每页的记录行数
+				pageList: [10], // 可供选择的每页的行数
+				//search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
+
+				//showExport: true,        // 是否显示导出按钮, 导出功能需要导出插件支持(tableexport.min.js)
+				//exportDataType: "basic", // 导出数据类型, 'basic':当前页, 'all':所有数据, 'selected':选中的数据
+				responseHandler: function(res) {
+					console.info(res);
+					if (res.success) {
+						return {
+							"total": res.totalCount,
+							"rows": res.data
+						}
+					} else {
+						//res.errorMsg
+					}
+				},
+				columns: [{
+						checkbox: true // 是否显示复选框
+					},
+					{
+						field: '_id',
+						title: 'ID',
+						visible: false
+						//sortable: true // 是否排序
+					},
+					{
+						field: 'name',
+						title: '用户名',
+						align: 'center',
+					}, {
+						field: 'email',
+						title: '邮箱',
+						align: 'center',
+					}, {
+						field: 'lastLoginTime',
+						title: '上次登录',
+						align: 'center',
+						formatter: function(value, row, index) {
+							return dateFtt("yyyy-MM-dd hh:mm:ss",new Date(row.lastLoginTime));
+						}
+					}, {
+						field: 'admin',
+						title: '管理员',
+						align: 'center',
+						formatter: function(value, row, index) {
+							let html = '';
+							if (row.admin) {
+								html =
+									'<span style="color:#15c377">是</span>';
+							} else {
+								html =
+									'<span  style="color:#f96868">否</span>';
+							}
+							return html;
+						}
+					},
+					{
+						field: 'operate',
+						title: '操作',
+						formatter: btnGroup, // 自定义方法
+						events: {
+							'click .edit-btn': function(event, value, row, index) {
+								editUser(row);
+							},
+							'click .del-btn': function(event, value, row, index) {
+								delUser(row._id);
+							},
+							'click .show-btn': function(event, value, row, index) {
+								showUser(row);
+							}
+						}
+					}
+				],
+				/*
+				onEditableSave: function (field, row, oldValue, $el) {
+				    $.ajax({
+				        type: "get",
+				        url: "http://www.bixiaguangnian.com/index/test/testEditTwo",
+				        data: row,
+				        dataType: 'jsonp',
+				        success: function (data, status) {
+				            if (data.code == '200') {
+				                // 这里的状态显示有自定义样式区分，做单行的更新
+				                $('.example-table').bootstrapTable('updateRow', {index: row.id, row: row});
+				            } else {
+				                alert(data.msg);
+				            }
+				        },
+				        error: function () {
+				            alert('修改失败，请稍后再试');
+				        }
+				    });
+				}
+				*/
+				onLoadSuccess: function(data) {
+					$("[data-toggle='tooltip']").tooltip();
+				}
+			});
+
+			// 操作按钮
+			function btnGroup() {
+				let html =
+					//'<a href="#!" data-url="views/user/edit_user.html" data-title="编辑用户信息" class="js-create-tab btn btn-xs btn-default m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
+					//'<a href="#!" class="btn btn-xs btn-default m-r-5 show-btn" title="查看" data-toggle="tooltip"><i class="mdi mdi-eye"></i></a>' +
+					'<a href="#!" class="btn btn-xs btn-default del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>';
+				return html;
+			}
+
+			// 操作方法 - 编辑
+			function editUser(row) {				
+				//localStorage.setItem('edit_user',row);
+				//alert('编辑信息跳转');
+				//<a href="#!" class="js-create-tab" data-title="测试页面" data-url="README.md">打开页签</a>
+			}
+			// 操作方法 - 删除
+			function delUser(id) {
+				api.ajaxPost('/deleteUser',{"userId":id}).then(res => {
+					if(res.success){
+						lightyear.notify('删除成功！', 'success', 3000, 'mdi mdi-emoticon-happy', 'top',
+							'center');							
+					}
+					else{
+						lightyear.notify(res.errorMsg, 'warning', 3000, 'mdi mdi-emoticon-happy', 'top',
+							'center');					}
+					return;					
+				});				
+			}
+			// 操作方法 - 查看
+			function showUser(row) {
+				console.info(row);
+				alert('查看详细');
+			}
+		</script>
+	</body>
+</html>

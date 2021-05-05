@@ -41,8 +41,8 @@
 		</style>
 	</head>
 
-	<body class="center-vh" style="background-image: url(images/login-bg-2.jpg); background-size: cover;">
-		<div class="card card-shadowed p-5 w-420 mb-0 mr-2 ml-2">
+	<body class="center-vh" style="background-image: url(images/login-bg-3.jpg); background-size: cover;">
+		<div class="card card-shadowed p-5 w-512 mb-0 mr-2 ml-2">
 			<div class="text-center mb-3">
 				<a href="index.html"> <img alt="light year admin" src="images/logo-sidebar.png"> </a>
 			</div>
@@ -85,8 +85,7 @@
 		<script type="text/javascript" src="js/main.min.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript">
-			;
-			$(function() {
+			$(function() {	
 				$("#login").click(function() {
 					//Base64(hex(pwd))
 					const passhex = md5.hex($('#password').val());
